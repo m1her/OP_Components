@@ -5,8 +5,8 @@ import { NavLinkType } from "../data";
 
 interface DragItem {
   index: number;
-  id: string;
-  type: string;
+  id: number;
+  isActive: boolean;
 }
 
 interface DraggableLinkProps {
@@ -42,7 +42,9 @@ export const DraggableLink: React.FC<DraggableLinkProps> = ({
       if (dragIndex < hoverIndex && hoverActualX < hoverMiddleX) return;
       if (dragIndex > hoverIndex && hoverActualX > hoverMiddleX) return;
 
-      moveLink(dragIndex, hoverIndex);
+      if (monitor.isOver() && item.isActive) {
+        moveLink(dragIndex, hoverIndex);
+      }
 
       item.index = hoverIndex;
     },
@@ -50,18 +52,18 @@ export const DraggableLink: React.FC<DraggableLinkProps> = ({
 
   const [{ isDragging }, dragRef] = useDrag({
     type: "item",
-    item: { index },
+    item: { index, id: linkData.id, isActive: linkData.isActive },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
   });
 
   const ref = useRef<HTMLDivElement>(null);
-  const dragDropRef = dragRef(dropRef(ref));
+  dragRef(dropRef(ref));
 
   return (
     <div
-      ref={dragDropRef}
+      ref={ref}
       className="select-none min-w-20 text-center rounded h-fit shadow-md bg-indigo-700 px-4 py-1 transition-opacity cursor-move"
       style={{ opacity: !isDragging ? 1 : 0.1 }}
     >
