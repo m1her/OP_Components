@@ -94,7 +94,10 @@ export const EditWebNavLinks = () => {
               setIsOpen(false);
             }}
           >
-            <div className="p-8 rounded-md bg-zinc-700 flex flex-col gap-6 items-center">
+            <div
+              className="p-8 rounded-md bg-zinc-700 flex flex-col gap-6 items-center"
+              onClick={(e) => e.stopPropagation()}
+            >
               <GroupStatusDrop
                 isActiveEffect={true}
                 filteringFunction={removeFromDisabled}

@@ -22,10 +22,20 @@ export const linksSlice = createSlice({
     updateActive: (state, action: PayloadAction<NavLinkType[]>) => {
       state.activeLinks = [...action.payload];
     },
+    updateLinkTitle: (
+      state,
+      action: PayloadAction<{ id: number; newTitle: string }>
+    ) => {
+      const link = state.links.find((l) => l.id === action.payload.id);
+      if (link) {
+        link.title = action.payload.newTitle;
+      }
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { updateLinks, updateActive } = linksSlice.actions;
+export const { updateLinks, updateActive, updateLinkTitle } =
+  linksSlice.actions;
 
 export default linksSlice.reducer;
