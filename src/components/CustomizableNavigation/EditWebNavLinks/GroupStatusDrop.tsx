@@ -1,6 +1,5 @@
 import React, { ReactNode, useRef } from "react";
 import { useDrop } from "react-dnd";
-import { NavLinkType } from "../data";
 
 export const GroupStatusDrop = ({
   children,
@@ -8,8 +7,6 @@ export const GroupStatusDrop = ({
   filteringFunction,
 }: {
   children: ReactNode;
-  links: NavLinkType[];
-  setLinks: React.Dispatch<React.SetStateAction<NavLinkType[]>>;
   isActiveEffect: boolean;
   filteringFunction: (id: number) => void;
 }) => {

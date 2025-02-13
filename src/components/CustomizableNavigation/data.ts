@@ -1,6 +1,6 @@
 export const defaultPcNavs: NavLinkType[] = [
   { id: 1, title: "Home", link: "/", isActive: true },
-  { id: 2, title: "About", link: "/", isActive: true },
+  { id: 2, title: "About", link: "/", isActive: false },
   { id: 3, title: "Services", link: "/", isActive: true },
   { id: 4, title: "Contact", link: "/", isActive: true },
   { id: 5, title: "Blog", link: "/", isActive: true },
