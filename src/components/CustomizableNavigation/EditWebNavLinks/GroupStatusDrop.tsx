@@ -27,7 +27,7 @@ export const GroupStatusDrop = ({
   return (
     <div
       ref={ref}
-      className={`flex w-full gap-6 items-center justify-center border rounded p-4
+      className={`flex md:flex-row flex-col w-full md:gap-6 gap-2 items-center justify-center border rounded p-4
         ${
           isOver
             ? isActiveEffect

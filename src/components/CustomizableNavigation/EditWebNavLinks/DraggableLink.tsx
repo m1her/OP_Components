@@ -34,15 +34,30 @@ export const DraggableLink: React.FC<DraggableLinkProps> = ({
       if (dragIndex === hoverIndex) return;
 
       const hoverBoundingRect = ref.current?.getBoundingClientRect();
-
-      const hoverMiddleX =
-        (hoverBoundingRect.right - hoverBoundingRect.left) / 2;
-
       const clientOffset = monitor.getClientOffset();
-      const hoverActualX = (clientOffset as XYCoord).x - hoverBoundingRect.left;
 
-      if (dragIndex < hoverIndex && hoverActualX < hoverMiddleX) return;
-      if (dragIndex > hoverIndex && hoverActualX > hoverMiddleX) return;
+      const screenHeight = window.innerHeight;
+      const isVertical = screenHeight > 600;
+
+      if (isVertical) {
+        const hoverMiddleY =
+          (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+
+        const hoverActualX =
+          (clientOffset as XYCoord).y - hoverBoundingRect.top;
+
+        if (dragIndex < hoverIndex && hoverActualX < hoverMiddleY) return;
+        if (dragIndex > hoverIndex && hoverActualX > hoverMiddleY) return;
+      } else {
+        const hoverMiddleX =
+          (hoverBoundingRect.right - hoverBoundingRect.left) / 2;
+
+        const hoverActualX =
+          (clientOffset as XYCoord).x - hoverBoundingRect.left;
+
+        if (dragIndex < hoverIndex && hoverActualX < hoverMiddleX) return;
+        if (dragIndex > hoverIndex && hoverActualX > hoverMiddleX) return;
+      }
 
       if (monitor.isOver() && item.isActive) {
         moveLink(dragIndex, hoverIndex);
