@@ -17,13 +17,13 @@ export const CustomizableNavigation = () => {
         <p className="font-medium text-xl">OPComTs</p>
 
         {/* Mobile Menu Button */}
-        <div className="lg:hidden flex items-center gap-x-2">
+        <div className="lg:hidden flex items-center gap-x-3">
           <EditWebNavLinks />
           <button className="text-white" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? (
-              <FontAwesomeIcon icon={faX} className="w-6" />
+              <FontAwesomeIcon icon={faX} className="w-4 h-4" />
             ) : (
-              <FontAwesomeIcon icon={faBars} className="w-6" />
+              <FontAwesomeIcon icon={faBars} width={24} className="w-4 h-4" />
             )}
           </button>
         </div>

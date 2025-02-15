@@ -24,10 +24,11 @@ export const GroupStatusDrop = ({
 
   const ref = useRef<HTMLDivElement>(null);
   dropRef(ref);
+
   return (
     <div
       ref={ref}
-      className={`flex md:flex-row flex-col w-full md:gap-6 gap-2 items-center justify-center border rounded p-4
+      className={`flex md:flex-row flex-col w-full md:gap-6 gap-2 items-center justify-start border rounded p-4 overflow-x-auto 
         ${
           isOver
             ? isActiveEffect
@@ -36,7 +37,7 @@ export const GroupStatusDrop = ({
             : ""
         }
         ${isActiveEffect ? "border-green-500" : "border-red-500"}
-        `}
+      `}
     >
       {children}
     </div>

@@ -36,8 +36,8 @@ export const DraggableLink: React.FC<DraggableLinkProps> = ({
       const hoverBoundingRect = ref.current?.getBoundingClientRect();
       const clientOffset = monitor.getClientOffset();
 
-      const screenHeight = window.innerHeight;
-      const isVertical = screenHeight > 600;
+      const screenWidth = window.innerWidth;
+      const isVertical = screenWidth < 768;
 
       if (isVertical) {
         const hoverMiddleY =
@@ -103,7 +103,7 @@ export const DraggableLink: React.FC<DraggableLinkProps> = ({
     <div
       ref={ref}
       onDoubleClick={() => setIsEditing(true)}
-      className="select-none min-w-20 text-center rounded h-fit shadow-md bg-indigo-700 px-4 py-1 transition-opacity cursor-move"
+      className="select-none truncate min-w-24 md:w-fit w-full text-center rounded h-fit shadow-md bg-indigo-700 px-2 py-1 transition-opacity cursor-move"
       style={{ opacity: !isDragging ? 1 : 0.1 }}
     >
       {isEditing ? (
@@ -114,6 +114,7 @@ export const DraggableLink: React.FC<DraggableLinkProps> = ({
           className="bg-transparent border-b border-transparent focus:border-white focus:outline-none w-20"
           onKeyDown={handleKeyDown}
           onBlur={saveTitle}
+          maxLength={12}
           onDoubleClick={(e) => {
             e.stopPropagation();
             if (inputRef.current) {

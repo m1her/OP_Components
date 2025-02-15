@@ -95,7 +95,7 @@ export const EditWebNavLinks = () => {
             }}
           >
             <div
-              className="p-8 rounded-md bg-zinc-700 flex md:flex-col flex-row gap-6 items-center"
+              className="p-8 rounded-md lg:w-2/3 md:w-3/4 w-full mx-6 bg-zinc-700 flex md:flex-col flex-row gap-6 items-center"
               onClick={(e) => e.stopPropagation()}
             >
               <GroupStatusDrop
